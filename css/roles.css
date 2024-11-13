@@ -1,0 +1,30 @@
+.card-link{
+    color: #818080;
+}
+
+#card{
+    top: 20%;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+.container{
+    width: 100%;
+    max-width: 1200px;
+    height: 430px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.fa-user-tie{
+    font-size: 8rem;
+}
+
+.fa-user-plus{
+    font-size: 8rem;
+}
+
+#text3{
+    text-align: center;
+}

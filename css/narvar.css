@@ -1,0 +1,141 @@
+.body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.form-control{
+    width: 10px;
+}
+
+#color-text{
+    color: #040404;
+    font-size: 12px;
+    font-weight: 600;
+    text-align:center;
+    align-content: end;
+}
+
+.color{
+    color: #ffffff;
+    font-weight: 600;
+    
+}
+
+.color1{
+    color: #020202;
+    font-weight: 600;
+    
+}
+
+
+
+.d-block{
+    opacity: 0.75;
+    filter:blur(1px)
+}
+
+.container-fluid{
+    box-shadow: 0 0 0px rgba(0,0,0,.1);
+}
+
+
+
+.login-button{
+    background-color: #00000000;
+    color: #000000;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover{
+    background-color: black;
+    border-color: #000000;
+    color: #fff;
+
+}
+
+.register-button{
+    background-color: #00000000;
+    color: #000000;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s background-color;
+}
+
+.register-button:hover{
+    background-color: black;
+    border-color: #000000;
+    color: #fff;
+
+}
+
+#borde{
+    border: none;
+    font-size: 1.25rem;
+}
+
+#borde:focus, .btn-clase:focus{
+    box-shadow: none;
+    outline: none;
+}
+
+
+
+.dropdown-item{
+    font-size: 16px;
+
+}
+
+
+
+
+
+@media(max-width:576px){
+    .d-grid{
+        display: flex;
+        position: absolute;
+        padding-left: 50%;
+    }
+    
+
+
+
+}
+
+@media screen and (max-width:750px){
+    html{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:780px){
+    html{
+        font-size: 10px;
+    }
+
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+section[id]{
+    scroll-margin-top: 70px;
+}
+
+.nosotros{
+    text-align: justify;
+    line-height: 2em;
+    font-size: 20px;
+    
+}
+
+
+

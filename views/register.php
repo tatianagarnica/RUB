@@ -12,6 +12,19 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <title>register</title>
+        <script>
+           
+        document.querySelector('form').addEventListener('submit', function(e) {
+        var password = document.querySelector('input[name="contrasena"]').value;
+        var confirmPassword = document.querySelector('input[name="confirmar_contrasena"]').value;
+
+        if (password !== confirmPassword) {
+            e.preventDefault(); // Prevenir el envío del formulario
+            alert("Las contraseñas no coinciden.");
+        }
+    });
+</script>
+
     </head>
     <body>
         <div class="container-form register">
@@ -26,34 +39,40 @@
             <div class="form-information">
                 <div class="form-information-childs">
                     <h2>Crear una cuenta</h2>
-                    <form class="form"> 
+                    <?php if (!empty($error_message)) : ?>
+                        <div style="color: red; font-weight: bold; margin-bottom: 10px;">
+                        <?= htmlspecialchars($error_message); ?>
+                        </div>
+                <?php endif; ?>
+                    <form class="form" method="POST" action="../php/registropaso1.php" enctype="multipart/form-data"> 
                         <label>
                             <i class='bx bx-user'></i>
-                            <input type="text" placeholder="nombre completo">
+                            <input type="text" name="nombre_completo" placeholder="nombre completo"required>
                         </label>
                         <label>
                             <i class='bx bx-envelope' ></i>
-                            <input type="email" placeholder="Email">
+                            <input type="email" name="correo" placeholder="Email"required>
                         </label>
                         <label>
                             <i class='bx bx-lock-alt' ></i>
-                            <input type="password" placeholder="Contraseña" class="form-control is-valid" id="validationServer02" value="Otto" required>
+                            <input type="password" name="contrasena" placeholder="Contraseña" class="form-control is" id="validationServer02" required>
                         </label>
                         <div id="passwordHelpBlock" class="form-text">
                             <p style="font-size: small;">Su contraseña debe tener entre 8 y 10 caracteres,<br>contener letras y números.</p>
                         </div>
                         <label>
                             <i class='bx bx-lock-alt' ></i>
-                            <input type="password" placeholder="Confirmar Contraseña">
+                            <input type="password"name="confirmacion_contrasena" placeholder="Confirmar Contraseña">
                         </label>
 
-                        <a href="../views/registrarusuario.html">
-                            <button class="btn btn-outline-dark mt-5" type="button">Registrar</button>
-                        </a>
+                        
+                            <button class="btn btn-outline-dark mt-5" type="submit">Registrar</button>
+                        
                     </form>
                 </div>
             </div>
         </div>
+        
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

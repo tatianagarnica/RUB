@@ -1,3 +1,5 @@
+<?php
+include '../php/registribici_tipo.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,17 @@
     <link rel="stylesheet" href="../css/nav.css">
     <title>verlistadobicicleta</title>
 </head>
+<script>
+        // Realizar la solicitud al backend
+        fetch('../php/verlistado_perdida.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('bicicletas-list').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error al cargar la lista de bicicletas:', error);
+            });
+    </script>
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
@@ -19,9 +32,9 @@
                 Bicicleta
                 </a>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../views/registrarBicicleta.html">Registrar</a></li>
-                <li><a class="dropdown-item" href="../views/editarBicicleta.html">Editar</a></li>
-                <li><a class="dropdown-item" href="../views/verlistadobicicleta.html">Ver</a></li>
+                <li><a class="dropdown-item" href="../views/registrarBicicleta.php">Registrar</a></li>
+                <li><a class="dropdown-item" href="../views/editarBicicleta.php">Editar</a></li>
+                <li><a class="dropdown-item" href="../views/verlistadobicicleta.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -29,8 +42,8 @@
                     Traspaso propiedad
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarTraspaso.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistatraspaso.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarTraspaso.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistatraspaso.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -38,8 +51,8 @@
                     Reportar perdida
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarPerdida.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistaperdidas.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarPerdida.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistaperdidas.php">Ver</a></li>
                 </ul>
             </div>
             <form class="d-flex" role="search">
@@ -52,10 +65,10 @@
                             <h2>Juan Manuel</h2>
                         </li>
                         <hr>
-                      <li><a class="dropdown-item" href="../views/perfil.html"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
-                      <li><a class="dropdown-item" href="../views/editarPerfil.html"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
+                      <li><a class="dropdown-item" href="../views/perfil.php"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
+                      <li><a class="dropdown-item" href="../views/editarPerfil.php"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../views/welcome.html"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
+                      <li><a class="dropdown-item" href="../views/welcome.php"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
                     </ul>
                 </div>
           </form>
@@ -64,55 +77,43 @@
 
     <div class="container">
         <div class="row">
-
+        <?php if ($result->num_rows > 0): ?>
+            <table class="table">
             <table class="table table-hover">
-                <thead>
-                    <tr>
-                      <th scope="col">Id</th>
-                      <th scope="col">Referencia</th>
-                      <th scope="col">Tipo</th>
-                      <th scope="col">Estado</th>
-                      <th scope="col">Operaciones</th>
-                    </tr>
                 </thead>
-                <tbody class="table-group-divider">
-                    <tr>
-                        <th scope="row">001</th>
-                        <td>01o98</td>
-                        <td>todo terreno</td>
-                        <td>ningun reporte</td>
+                <tbody id="bicicletas-list">
+                <?php if (!empty($bicicletas)): ?>
+                    <?php foreach ($bicicletas as $bicicleta): ?>
+        
+                        <tr>
+                        <td><?= htmlspecialchars($bicicleta['numero_registro']); ?></td>
+                        <td><?= htmlspecialchars($bicicleta['referencia']); ?></td>
+                        <td><?= htmlspecialchars($bicicleta['fecha_perdida']); ?></td>
+                        <td><?= htmlspecialchars($bicicleta['estado']); ?></td>
                         <td>
-                            <a href="../views/detalle.html" id="borde"><i class="fa-solid fa-eye"></i></a>
-                            <a href="../views/editarBicicleta.html" id="borde"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="#" id="borde"><i class="fa-regular fa-trash-can"></i></a>
+                            <!-- Íconos para operaciones -->
+                          
+                            <a href="../views/editarBicicleta.php?id=<?= $row['id'] ?>" id="borde" class="btn btn-warning btn-sm">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a href="../php/eliminarBicicleta.php?id=<?= $row['id'] ?>" id="borde" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta bicicleta?')">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </a>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">001</th>
-                        <td>01o98</td>
-                        <td>todo terreno</td>
-                        <td>ningun reporte</td>
-                        <td>
-                            <a href="../views/detalle.html" id="borde"><i class="fa-solid fa-eye"></i></a>
-                            <a href="#" id="borde"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="#" id="borde"><i class="fa-regular fa-trash-can"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">001</th>
-                        <td>01o98</td>
-                        <td>todo terreno</td>
-                        <td>ningun reporte</td>
-                        <td>
-                            <a href="../views/detalle.html" id="borde"><i class="fa-solid fa-eye"></i></a>
-                            <a href="#" id="borde"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="#" id="borde"><i class="fa-regular fa-trash-can"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    <?php endforeach; ?>
+                <?php else: ?>
+            <tr>
+                <td colspan="8">No hay bicicletas registradas.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody> 
+    <?php endif; ?>
+
+
+     </table>
             <div class="d-md-flex justify-content-md-end">
-                <a href="../views/categorias.html" class="text-end text-wrap">                   
+                <a href="../views/categorias.php" class="text-end text-wrap">                   
                      <button class="btn btn-dark" type="button">Regresar</button>
                 </a>
             </div>

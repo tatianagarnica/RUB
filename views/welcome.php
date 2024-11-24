@@ -27,8 +27,8 @@
             </div>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <a href="../views/login.html" class="login-button border border-dark btn-outline-darck">Iniciar Sesión</a>
-              <a href="../views/register.html" class="register-button border border-dark btn-outline-darck">Registrate</a>
+              <a href="../views/login.php" class="login-button border border-dark btn-outline-darck">Iniciar Sesión</a>
+              <a href="../views/register.php" class="register-button border border-dark btn-outline-darck">Registrate</a>
           </div>
         </div>
     </nav>

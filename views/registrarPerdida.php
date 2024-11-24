@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +22,9 @@
                 Bicicleta
                 </a>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../views/registrarBicicleta.html">Registrar</a></li>
-                <li><a class="dropdown-item" href="../views/editarBicicleta.html">Editar</a></li>
-                <li><a class="dropdown-item" href="../views/verlistadobicicleta.html">Ver</a></li>
+                <li><a class="dropdown-item" href="../views/registrarBicicleta.php">Registrar</a></li>
+                <li><a class="dropdown-item" href="../views/editarBicicleta.php">Editar</a></li>
+                <li><a class="dropdown-item" href="../views/verlistadobicicleta.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -30,8 +32,8 @@
                     Traspaso propiedad
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarTraspaso.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistatraspaso.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarTraspaso.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistatraspaso.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -39,8 +41,8 @@
                     Reportar perdida
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarPerdida.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistaperdidas.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarPerdida.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistaperdidas.php">Ver</a></li>
                 </ul>
             </div>
             <form class="d-flex" role="search">
@@ -53,10 +55,10 @@
                             <h2>Juan Manuel</h2>
                         </li>
                         <hr>
-                      <li><a class="dropdown-item" href="../views/perfil.html"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
-                      <li><a class="dropdown-item" href="../views/editarPerfil.html"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
+                      <li><a class="dropdown-item" href="../views/perfil.php"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
+                      <li><a class="dropdown-item" href="../views/editarPerfil.php"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../views/welcome.html"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
+                      <li><a class="dropdown-item" href="../views/welcome.php"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
                     </ul>
                 </div>
           </form>
@@ -71,56 +73,67 @@
                 <h2>Registrar una perdida</h2>
             </div>
         </div>
+        
+
+
+    <form method="POST" action="../php/registro_perdida.php" enctype="multipart/form-data">
         <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-6">
-                <label for="Id de la bicicleta">Id de la bicicleta</label>
-                <input class="form-control" id="IdBicicleta" type="text" placeholder="Id de la bicicleta" aria-label="default input example">
+            
+
+               
             </div>
             <div class="col-12 col-md-12 col-lg-6">
                 <label for="Nº De referencia">Nº De referencia</label>
-                <input class="form-control" id="Nºreferencia" type="text" placeholder="Nº De referencia" aria-label="default input example">
+                <input class="form-control" name= "referencia"id="referencia" type="text" placeholder="Nº De referencia" aria-label="default input example">
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="date">Feche del reporte</label>
-                <input class="form-control" id="date" type="date" placeholder="fecha reporte" aria-label="default input example">
+                <input class="form-control" name="fecha_reporte" id="fecha_reporte" type="date" placeholder="fecha reporte" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="date">fecha de la perdida</label>
-                <input class="form-control" id="datetime" type="date" placeholder="fecha de la perdida" aria-label="default input example">
+                <input class="form-control" name="fecha_perdida" id="fecha_perdida" type="date" placeholder="fecha de la perdida" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Direccion">Direccion exacta</label>
-                <input class="form-control" id="Direccion" type="text" placeholder="Direccion" aria-label="default input example">
+                <input class="form-control" name="direccion"id="direccion" type="text" placeholder="Direccion" aria-label="default input example">
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="tipodocumento">Tipo del documento</label>
-                <input class="form-control" id="tipodocumento" type="text" placeholder="tipodocumento" aria-label="default input example">
+                <select class="form-select" name="tipo_documento" id="tipo_documento" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="1">RC</option>
+                    <option value="2">CC</option>
+                    <option value="3">NIT</option>
+                </select>
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nºdeidentificacion">Nº de identificacion</label>
-                <input class="form-control" id="Nºdeidentificacion" type="text" placeholder="Nºdeidentificacion" aria-label="default input example">
+                <input class="form-control"  name="numero_documento"id="numero_documento" type="text" placeholder="Nºdeidentificacion" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nombre del dueño"></label>
-                <input class="form-control" id="Nombre del dueño" type="text" placeholder="Nombre del dueño" aria-label="default input example">
+                <input class="form-control" id="nombre_completo" type="text" placeholder="Nombre del dueño" aria-label="default input example">
             </div>
             
         </div>
         <div class="mb-3 mt-3">
             <label for="exampleFormControlTextarea1" class="form-label">Breve descrpcion de la perdida</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="detalle" id= "detalle"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
 
         <div class="mt-4 mx-4 d-grid gap-2 d-md-block d-md-flex justify-content-md-end">
-            <button class="btn btn-success" id="btn-guardar" type="button">Guardar</button>
+            <button class="btn btn-success"  type="submit">Guardar</button>
             <a href="../views/categorias.html">
                 <button class="btn btn-danger" type="button">Cancelar</button>
             </a>
         </div>
+    </form>
     </div>
 
 

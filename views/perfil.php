@@ -20,9 +20,9 @@
                 Bicicleta
                 </a>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../views/registrarBicicleta.html">Registrar</a></li>
-                <li><a class="dropdown-item" href="../views/editarBicicleta.html">Editar</a></li>
-                <li><a class="dropdown-item" href="../views/verlistadobicicleta.html">Ver</a></li>
+                <li><a class="dropdown-item" href="../views/registrarBicicleta.php">Registrar</a></li>
+                <li><a class="dropdown-item" href="../views/editarBicicleta.php">Editar</a></li>
+                <li><a class="dropdown-item" href="../views/verlistadobicicleta.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -30,8 +30,8 @@
                     Traspaso propiedad
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarTraspaso.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistatraspaso.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarTraspaso.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistatraspaso.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -53,10 +53,10 @@
                             <h2>Juan Manuel</h2>
                         </li>
                         <hr>
-                      <li><a class="dropdown-item" href="../views/perfil.html"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
-                      <li><a class="dropdown-item" href="../views/editarPerfil.html"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
+                      <li><a class="dropdown-item" href="../views/perfil.php"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
+                      <li><a class="dropdown-item" href="../views/editarPerfil.php"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../views/welcome.html"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
+                      <li><a class="dropdown-item" ><p><i class="fa-solid fa-right-from-bracket" href="../php/logout.php"></i>cerrar Sesion</p></a></li>
                     </ul>
                 </div>
           </form>

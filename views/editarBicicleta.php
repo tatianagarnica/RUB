@@ -1,3 +1,11 @@
+<?php
+include '../php/registribici_tipo.php' ?>
+<?php
+include '../php/editar_bici.php' ?>
+<?php
+include '../php/editar_base.php' 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +13,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/registrarbicicleta.css">
+    <link rel="stylesheet" href="../css/detalle.css">
     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="text/javascript" src="/scripts/jquery.min.js"></script>
-    <title>Registrar una bicicleta</title>
+    <title>Editar una bicicleta</title>
 </head>
+<script>
+        document.getElementById('numero_documento').addEventListener('input', function() {
+    let numero_documento = this.value;
+    
+    if (numero_documento.length >= 6) {  // Ejemplo de validación para el número de documento
+        fetch('../php/verificar_usuario.php?numero_documento=' + numero_documento)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('nombre_dueño').value = data.nombre;
+                    document.getElementById('nombre_dueño').style.display = 'block';
+                } else {
+                    alert('El número de identificación no está registrado.');
+                    document.getElementById('nombre_dueño').style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    } else {
+        document.getElementById('nombre_dueño').style.display = 'none';
+    }
+});
+
+    </script>
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
@@ -62,76 +92,106 @@
           </form>
         </div>
     </nav>
-
     <div class="container">
-        <div class="row">
+    <div class="borde">
+    <div class="borde">
+    <form  method="POST" action="../php/editar_bici.php" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?php echo htmlspecialchars($bicicleta['id']); ?>">
+
+
+
+        <div class="row mx-3">
             <div class="col-12 col-md-3 col-lg-3 mt-1">
                 <img src="../images/logo.png" width="150" height="150" alt="">
             </div>
             <div class="col-12 col-md-9 col-lg-9 mt-4">
-                <h2>Registrar una bicicleta</h2>
+                <h2>Editar una bicicleta</h2>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class=" col-12 col-md-12 col-lg-4">
-                <label for="Tipo de Bicicleta">Tipo de Bicicleta</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">todo terreno</option>
-                    <option value="2">playera</option>
-                    <option value="3">carretera</option>
+        
+        <div class="row mt-3 mx-1">
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="tipo_bicicleta">Tipo de Bicicleta</label>
+                <select class="form-select" name="tipo_bicicleta" id="tipo_bicicleta">
+                    <option value="">Seleccione un tipo</option>
+                    <?php
+                    foreach ($tipos_bicicleta as $tipo) {
+                        $selected = ($bicicleta['tipo_bicicleta'] == $tipo) ? 'selected' : '';
+                        echo "<option value='" . htmlspecialchars($tipo) . "' $selected>" . htmlspecialchars($tipo) . "</option>";
+                    }
+                    ?>
                 </select>
             </div>
             <div class="col-12 col-md-12 col-lg-4">
-                <label for="Nº De referencia">Nº De referencia</label>
-                <input class="form-control" id="Nºreferencia" type="text" placeholder="Nº De referencia" aria-label="default input example">
+                <label for="referencia">Nº De referencia</label>
+                <input class="form-control" id="referencia" name="referencia" type="text" 
+                    value="<?php echo htmlspecialchars($bicicleta['referencia']); ?>" 
+                    placeholder="Nº De referencia">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
-                <label for="date">fecha</label>
-                <input class="form-control" id="fecha" type="date" placeholder="fecha" aria-label="default input example">
+                <label for="fecha_adquisicion">Fecha de adquisición</label>
+                <input class="form-control" id="fecha_adquisicion" name="fecha_adquisicion" type="date" 
+                    value="<?php echo htmlspecialchars($bicicleta['fecha_adquisicion']); ?>" 
+                    placeholder="fecha_adquisicion">
             </div>
         </div>
-        <div class="row mt-3">
+
+        <div class="row mt-3 mx-1">
             <div class="col-12 col-md-12 col-lg-1">
-                <label for="exampleColorInput" class="form-label">Color</label>
-                <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                <label for="color" class="form-label">Color</label>
+                <input type="color" class="form-control form-control-color" id="color" name="color" 
+                    value="<?php echo htmlspecialchars($bicicleta['color']); ?>" 
+                    title="Choose your color">
             </div>
             <div class="col-12 col-md-12 col-lg-6">
-                <label class="mt-1" for="Nº Rin">Nº Rin</label>
-                <input class="form-control" id="NºRin" type="text" placeholder="Nº Rin" aria-label="default input example">
+                <label for="numero_rin">Nº Rin</label>
+                <input class="form-control" id="numero_rin" name="numero_rin" type="text" 
+                    value="<?php echo htmlspecialchars($bicicleta['numero_rin']); ?>" 
+                    placeholder="Nº Rin">
             </div>
             <div class="col-12 col-md-12 col-lg-5">
-                <label class="mt-1" for="Nº Rin">Marca</label>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">Specialized</option>
-                    <option value="2">Canyon</option>
-                    <option value="3">Scott</option>
+                <label for="marca">Marca</label>
+                <select class="form-select" name="marca" id="marca">
+                    <option value="">Seleccione una marca</option>
+                    <option value="Specialized" <?php echo $bicicleta['marca'] == 'Specialized' ? 'selected' : ''; ?>>Specialized</option>
+                    <option value="Canyon" <?php echo $bicicleta['marca'] == 'Canyon' ? 'selected' : ''; ?>>Canyon</option>
+                    <option value="Scott" <?php echo $bicicleta['marca'] == 'Scott' ? 'selected' : ''; ?>>Scott</option>
                 </select>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-12 col-md-12 col-lg-4">
-                <label for="Valor">Valor</label>
-                <input class="form-control" id="Valor" type="text" placeholder="Valor" aria-label="default input example">
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <label for="Nombre del dueño">Nombre del dueño</label>
-                <input class="form-control" id="Nombre del dueño" type="text" placeholder="Nombre del dueño" aria-label="default input example">
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <label for="Nº de identificacion">Nº de identificacion</label>
-                <input class="form-control" id="Nºdeidentificacion" type="text" placeholder="Nº de identificacion" aria-label="default input example">
-            </div>
 
+        <div class="row mt-3 mx-1">
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="valor">Valor</label>
+                <input class="form-control" id="valor" name="valor" type="text" 
+                    value="<?php echo htmlspecialchars($bicicleta['valor']); ?>" 
+                    placeholder="Valor">
+            </div>
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="nombre_completo">Nombre del dueño</label>
+                <input class="form-control" id="nombre_completo" name="nombre_completo" type="text" 
+                value="<?php echo isset($bicicleta['nombre_completo']) ? htmlspecialchars($bicicleta['usuario_id']) : ''; ?>" 
+                placeholder="Nombre del dueño" >
+            </div>
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="numero_documento">Nº de identificación</label>
+                <input class="form-control" id="numero_documento" name="numero_documento" type="text" 
+                value="<?php echo isset($bicicleta['numero_documento']) ? htmlspecialchars($bicicleta['usuario_id']) : ''; ?>" 
+                placeholder="Nº de identificación" >
+            </div>
         </div>
-        <div class="mt-3 gap-2 d-md-block d-md-flex justify-content-end btn1">
-            <button class="btn btn-success" type="button">Guardar</button>
-            <a href="../views/categorias.html">
+        <div class="my-3 mx-3 d-grid gap-2 d-md-block d-md-flex justify-content-md-end">
+            <button class="btn btn-success" type="submit">Guardar</button>
+            
                 <button class="btn btn-danger" type="button">Cancelar</button>
-            </a>
+            
         </div>
+    </form>
+</div>
+
     </div>
+</div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

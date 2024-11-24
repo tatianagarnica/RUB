@@ -24,10 +24,10 @@
                             <h2>Juan Manuel</h2>
                         </li>
                         <hr>
-                      <li><a class="dropdown-item" href="../views/perfil.html"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
-                      <li><a class="dropdown-item" href="../views/editarPerfil.html"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
+                      <li><a class="dropdown-item" href="../views/perfil.php"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
+                      <li><a class="dropdown-item" href="../views/editarPerfil.php"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../views/welcome.html"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
+                      <li><a class="dropdown-item" href="../views/welcome.php"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
                     </ul>
                 </div>
           </form>
@@ -38,8 +38,8 @@
                 <div class="card-body">
                     <h5 class="d-flex justify-content-center"><i class="fa-solid fa-bicycle cate"></i></h5>
                         <h6 class="mb-3 text-center"><a>Bicicleta</a></h6>
-                <a href="../views/registrarBicicleta.html" style="text-decoration: none;" class="card-link">Registrar</a>
-                <a href="../views/verlistadobicicleta.html" style="text-decoration: none;" class="card-link">ver listado</a>
+                <a href="../views/registrarBicicleta.php" style="text-decoration: none;" class="card-link">Registrar</a>
+                <a href="../views/verlistadobicicleta.php" style="text-decoration: none;" class="card-link">ver listado</a>
                 </div>
             </div>
 
@@ -47,8 +47,8 @@
                 <div class="card-body">
                     <h5 class="card-title d-flex justify-content-center"><i class="fa-solid fa-share-from-square cate"></i></h5>
                         <h6 class="mb-3 text-center"><a>Traspaso propiedad</a></h6>
-                <a href="../views/registrarTraspaso.html" style="text-decoration: none;" class="card-link">Registrar</a>
-                <a href="../views/verlistatraspaso.html" style="text-decoration: none;" class="card-link">ver listado</a>
+                <a href="../views/registrarTraspaso.php" style="text-decoration: none;" class="card-link">Registrar</a>
+                <a href="../views/verlistatraspaso.php" style="text-decoration: none;" class="card-link">ver listado</a>
                 </div>
             </div>
             
@@ -56,8 +56,8 @@
                 <div class="card-body">
                     <h5 class="card-title d-flex justify-content-center"><i class="fa-solid fa-triangle-exclamation cate"></i></h5>
                         <h6 class="mb-3 text-center"><a>Reportar perdida</a></h6>
-                <a href="../views/registrarPerdida.html" style="text-decoration: none;" class="card-link">Registrar</a>
-                <a href="../views/verlistaperdidas.html" style="text-decoration: none;" class="card-link">ver listado</a>
+                <a href="../views/registrarPerdida.php" style="text-decoration: none;" class="card-link">Registrar</a>
+                <a href="../views/verlistaperdidas.php" style="text-decoration: none;" class="card-link">ver listado</a>
                 </div>
             </div>
             

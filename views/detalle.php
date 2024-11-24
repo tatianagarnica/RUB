@@ -1,3 +1,5 @@
+<?php
+include '../php/detallle_bici.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +21,9 @@
                 Bicicleta
                 </a>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../views/registrarBicicleta.html">Registrar</a></li>
-                <li><a class="dropdown-item" href="../views/editarBicicleta.html">Editar</a></li>
-                <li><a class="dropdown-item" href="../views/verlistadobicicleta.html">Ver</a></li>
+                <li><a class="dropdown-item" href="../views/registrarBicicleta.php>Registrar</a></li>
+                <li><a class="dropdown-item" href="../views/editarBicicleta.php">Editar</a></li>
+                <li><a class="dropdown-item" href="../views/verlistadobicicleta.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -29,8 +31,8 @@
                     Traspaso propiedad
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarTraspaso.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistatraspaso.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarTraspaso.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistatraspaso.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -38,8 +40,8 @@
                     Reportar perdida
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarPerdida.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistaperdidas.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarPerdida.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistaperdidas.php">Ver</a></li>
                 </ul>
             </div>
             <form class="d-flex" role="search">
@@ -52,10 +54,10 @@
                             <h2>Juan Manuel</h2>
                         </li>
                         <hr>
-                      <li><a class="dropdown-item" href="../views/perfil.html"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
-                      <li><a class="dropdown-item" href="../views/editarPerfil.html"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
+                      <li><a class="dropdown-item" href="../views/perfil.php"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
+                      <li><a class="dropdown-item" href="../views/editarPerfil.php"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../views/welcome.html"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
+                      <li><a class="dropdown-item" href="../views/welcome.php"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
                     </ul>
                 </div>
           </form>
@@ -67,47 +69,48 @@
             <img  src="../images/logo.png" id="logo" alt="">
             <div class="row">
                 <div class="col-4">
-                    <h6>id</h6>
-                    <p>001</p>
+                    <h6>ID</h6>
+                    <p><?= htmlspecialchars($bicicleta['id']) ?></p>
                 </div>
                 <div class="col-4">
-                    <h6>referencia</h6>
-                    <p>01o98</p>
+                    <h6>Referencia</h6>
+                    <p><?= htmlspecialchars($bicicleta['referencia']) ?></p>
                 </div>
                 <div class="col-4">
-                    <h6>Tipo de bicicleta</h6>
-                    <p>todo terreno</p>
+                    <h6>Tipo de Bicicleta</h6>
+                    <p><?= htmlspecialchars($bicicleta['tipo_bicicleta']) ?></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4">
-                    <h6>nº de rin</h6>
-                    <p>145</p>
+                    <h6>Nº de Rin</h6>
+                    <p><?= htmlspecialchars($bicicleta['numero_rin']) ?></p>
                 </div>
                 <div class="col-4">
-                    <h6>color</h6>
-                    <p>azul</p>
+                    <h6>Color</h6>
+                    <p><?= htmlspecialchars($bicicleta['color']) ?></p>
                 </div>
                 <div class="col-4">
                     <h6>Marca</h6>
-                    <p>Specialized</p>
+                    <p><?= htmlspecialchars($bicicleta['marca']) ?></p>
                 </div>
-                <div class="row">
-                    <div class="col-4">
-                        <h6>fecha expedicion</h6>
-                        <p>07/11/2024</p>
-                    </div>
-                    <div class="col-5">
-                        <h6>Dueño</h6>
-                        <p>Juan Manuel Gutierrez Diaz</p>
-                    </div>
-                    <div class="col-3">
-                        <h6>Identificacion</h6>
-                        <p>65789456</p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <h6>Fecha de Adquisición</h6>
+                    <p><?= htmlspecialchars($bicicleta['fecha_adquisicion']) ?></p>
                 </div>
+                <div class="col-5">
+                    <h6>Dueño</h6>
+                    <p><?= htmlspecialchars($bicicleta['dueño']) ?></p>
+                </div>
+                <div class="col-3">
+                    <h6>Identificación</h6>
+                    <p><?= htmlspecialchars($bicicleta['numero_documento']) ?></p>
+                </div>
+            </div>
                 <div class="d-md-flex justify-content-md-end">
-                    <a href="../views/verlistadobicicleta.html" class="text-end text-wrap">                   
+                    <a href="../views/verlistadobicicleta.php" class="text-end text-wrap">                   
                          <button class="btn btn-dark" type="button">Regresar</button>
                     </a>
                 </div>

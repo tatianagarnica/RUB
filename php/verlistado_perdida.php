@@ -49,6 +49,7 @@ if ($result = $conexcion->query($query)) {
         echo '<option value="recuperado" ' . ($row['estado'] == 'recuperado' ? 'selected' : '') . '>Recuperado</option>';
         echo '</select>';
         echo '</form>';
+        
         echo '</td>';
 
         // Operaciones de editar y eliminar

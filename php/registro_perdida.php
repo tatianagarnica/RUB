@@ -32,6 +32,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bicicleta = $resultado_bicicleta->fetch_assoc();
     $id_bicicleta = $bicicleta['id'];
 
+    // Verificar si la bicicleta ya está registrada como pérdida
+    $query_estado = "SELECT estado FROM registro_perdida WHERE bicicletas_id = ? AND estado = 'PERDIDO'";
+    $stmt_estado = $conexcion->prepare($query_estado);
+    $stmt_estado->bind_param("i", $id_bicicleta);
+    $stmt_estado->execute();
+    $resultado_estado = $stmt_estado->get_result();
+
+    if ($resultado_estado->num_rows > 0) {
+        echo "<script>
+            alert('La bicicleta con la referencia $referencia ya ha sido reportada como perdida.');
+            window.history.back(); // Regresa a la página anterior
+        </script>";
+        exit;
+    }
+
     // Verificar si el usuario está registrado
     $query_usuario = "SELECT id FROM usuarios WHERE numero_documento = ?";
     $stmt_usuario = $conexcion->prepare($query_usuario);
@@ -75,18 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Confirmar transacción
         $conexcion->commit();
         header("Location: ../views/categorias.php");
-                exit();
-
-        echo "<script>
-            Swal.fire({
-                title: 'Éxito',
-                text: 'La pérdida se registró correctamente y los estados se actualizaron.',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            }).then(() => {
-                window.location.href = '../views/categorias.php';
-            });
-        </script>";
+        exit();
 
     } catch (Exception $e) {
         // Revertir transacción en caso de error
@@ -104,5 +108,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Acceso no permitido.";
 }
 ?>
-
-

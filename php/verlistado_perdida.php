@@ -23,7 +23,7 @@ if ($result = $conexcion->query($query)) {
     echo '<th>Referencia</th>';
     echo '<th>Fecha Perdida</th>';
     echo '<th>Estado</th>';
-    echo '<th style="padding-left:18%;">Operaciones</th>';
+    echo '<th style="padding-left:1%;">Operaciones</th>';
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -45,8 +45,9 @@ if ($result = $conexcion->query($query)) {
         echo '<form action="../php/editarestado_perdida.php" method="POST">';
         echo '<input type="hidden" name="registro_id" value="' . $row['id'] . '">';
         echo '<select name="estado" class="form-select" onchange="this.form.submit()">'; 
-        echo '<option value="perdido" ' . ($row['estado'] == 'perdido' ? 'selected' : '') . '>Perdido</option>';
-        echo '<option value="recuperado" ' . ($row['estado'] == 'recuperado' ? 'selected' : '') . '>Recuperado</option>';
+        echo '<option value="Perdido" ' . ($row['estado'] == 'PERDIDO' ? 'selected' : '') . '>Perdido</option>';
+        echo '<option value="Recuperado" ' . ($row['estado'] == 'RECUPERADO' ? 'selected' : '') . '>Recuperado</option>';
+        echo '<option value="Ninguno" ' . ($row['estado'] == 'NINGUNO' ? 'selected' : '') . '>Ninguno</option>';
         echo '</select>';
         echo '</form>';
         
@@ -55,7 +56,7 @@ if ($result = $conexcion->query($query)) {
         // Operaciones de editar y eliminar
         echo '<td>';
         echo "<a href='../views/editarBicicleta.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>
-                <i class='fa-solid fa-pen-to-square'></i>
+                <i class='fa-solid fa-pen-to-square '></i>
             </a>";
         echo "<a href='../php/eliminarBicicleta.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"¿Estás seguro de eliminar esta bicicleta?\")'>
                 <i class='fa-regular fa-trash-can'></i>

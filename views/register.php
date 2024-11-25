@@ -36,41 +36,7 @@
                     <a href="../views/login.html"><input type="button" value="Iniciar sesión" id="sign-in"></a>
                 </div>
             </div>
-            <div class="form-information">
-                <div class="form-information-childs">
-                    <h2>Crear una cuenta</h2>
-                    <?php if (!empty($error_message)) : ?>
-                        <div style="color: red; font-weight: bold; margin-bottom: 10px;">
-                        <?= htmlspecialchars($error_message); ?>
-                        </div>
-                <?php endif; ?>
-                    <form class="form" method="POST" action="../php/registropaso1.php" enctype="multipart/form-data"> 
-                        <label>
-                            <i class='bx bx-user'></i>
-                            <input type="text" name="nombre_completo" placeholder="nombre completo"required>
-                        </label>
-                        <label>
-                            <i class='bx bx-envelope' ></i>
-                            <input type="email" name="correo" placeholder="Email"required>
-                        </label>
-                        <label>
-                            <i class='bx bx-lock-alt' ></i>
-                            <input type="password" name="contrasena" placeholder="Contraseña" class="form-control is" id="validationServer02" required>
-                        </label>
-                        <div id="passwordHelpBlock" class="form-text">
-                            <p style="font-size: small;">Su contraseña debe tener entre 8 y 10 caracteres,<br>contener letras y números.</p>
-                        </div>
-                        <label>
-                            <i class='bx bx-lock-alt' ></i>
-                            <input type="password"name="confirmacion_contrasena" placeholder="Confirmar Contraseña">
-                        </label>
-
-                        
-                            <button class="btn btn-outline-dark mt-5" type="submit">Registrar</button>
-                        
-                    </form>
-                </div>
-            </div>
+            
         </div>
         
 

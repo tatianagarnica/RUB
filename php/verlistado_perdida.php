@@ -55,7 +55,7 @@ if ($result = $conexcion->query($query)) {
 
         // Operaciones de editar y eliminar
         echo '<td>';
-        echo "<a href='../views/editarBicicleta.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>
+        echo "<a href='../views/editar_perdida_r.php?id=" . $row['id'] . "' class='btn btn-warning btn-sm'>
                 <i class='fa-solid fa-pen-to-square '></i>
             </a>";
         echo "<a href='../php/eliminarBicicleta.php?id=" . $row['id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"¿Estás seguro de eliminar esta bicicleta?\")'>

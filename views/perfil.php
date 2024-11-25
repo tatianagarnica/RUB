@@ -29,6 +29,7 @@
                 <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Traspaso propiedad
                 </a>
+                <p>a</p>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../views/registrarTraspaso.php">Registrar</a></li>
                     <li><a class="dropdown-item" href="../views/verlistatraspaso.php">Ver</a></li>

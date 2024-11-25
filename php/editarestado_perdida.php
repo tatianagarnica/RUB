@@ -27,6 +27,8 @@ if (isset($_POST['registro_id']) && isset($_POST['estado'])) {
 
         // Si todo fue bien, commit de la transacción
         $conexcion->commit();
+        header("Location: ../views/verlistaperdidas.php");
+                exit();
         
         
     } catch (Exception $e) {

@@ -1,3 +1,7 @@
+<?php
+// Incluir la conexión a la base de datos
+include '../php/editar_base_perdida.php';?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +12,8 @@
     <link rel="stylesheet" href="../css/registrarbicicleta.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/nav.css">
-    <title>Registrar una traspaso</title>
+    <title>Registrar una perdida</title>
 </head>
 <body>
     <nav class="navbar bg-body-tertiary">
@@ -69,60 +72,71 @@
                 <img src="../images/logo.png" width="150" height="150" alt="">
             </div>
             <div class="col-12 col-md-9 col-lg-9 mt-4">
-                <h2>Registrar un Traspaso</h2>
+                <h2>Registrar una perdida</h2>
             </div>
         </div>
-        <form method="POST" action="../php/registro_traspaso.php" enctype="multipart/form-data">
-        <div class="row">
+        
+
+
+    <form method="POST" action="../php/editar_perdida.php" enctype="multipart/form-data">
+    <input type="hidden" name="registro_id" value="<?php echo htmlspecialchars($row['id']); ?>">
+        <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-6">
-                <label for="Nº De referencia"></label>
-                <input class="form-control"name="referencia" id="referencia" type="text" placeholder="Nº De referencia" aria-label="default input example">
+            
+
+               
+            </div>
+            <div class="col-12 col-md-12 col-lg-6">
+                <label for="Nº De referencia">Nº De referencia</label>
+                <input class="form-control" name= "referencia"id="referencia" value="<?php echo htmlspecialchars($row['referencia']); ?>" type="text" placeholder="Nº De referencia" aria-label="default input example">
             </div>
         </div>
-        <div class="row">
-         
+        <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-4">
-                <label for="Nº Rin"></label>
-                <input class="form-control" name="numero_rin" id="numero_rin" type="text" placeholder="Nº Rin" aria-label="default input example">
+                <label for="date">Feche del reporte</label>
+                <input class="form-control" name="fecha_reporte" id="fecha_reporte" value="<?php echo htmlspecialchars($row['fecha_perdida']); ?>" type="date" placeholder="fecha reporte" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
-                <label for="Marca"></label>
-                <select class="form-select" name="marca" id="marca" aria-label="Default select example">
+                <label for="date">fecha de la perdida</label>
+                <input class="form-control" name="fecha_perdida" id="fecha_perdida" value="<?php echo htmlspecialchars($row['fecha_reporte']); ?>" type="date" placeholder="fecha de la perdida" aria-label="default input example">
+            </div>
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="Direccion">Direccion exacta</label>
+                <input class="form-control" name="direccion"id="direccion" value="<?php echo isset($row['direccion']) ? htmlspecialchars($row['direccion']) : ''; ?>" type="text" placeholder="Direccion" aria-label="default input example">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="tipodocumento">Tipo del documento</label>
+                <select class="form-select" name="tipo_documento" id="tipo_documento" value="<?php echo htmlspecialchars($row['tipo_documento']); ?>" aria-label="Default select example">
                     <option selected></option>
-                    <option value="Specialized">Specialized</option>
-                    <option value="Canyon">Canyon</option>
-                    <option value="Scott">Scott</option>
+                    <option value="1">RC</option>
+                    <option value="2">CC</option>
+                    <option value="3">NIT</option>
                 </select>
             </div>
-           
-        </div>
-        <div class="row">
-            
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="Nºdeidentificacion">Nº de identificacion</label>
+                <input class="form-control"  name="numero_documento"id="numero_documento" value="<?php echo htmlspecialchars($row['numero_documento']); ?>" type="text" placeholder="Nºdeidentificacion" aria-label="default input example">
+            </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nombre del dueño"></label>
-                <input class="form-control" name="nombre_completo" id="nombre_dueño" type="text" placeholder="Nombre del dueño" aria-label="default input example">
+                <input class="form-control" id="nombre_completo" type="text" placeholder="Nombre del dueño" value="<?php echo htmlspecialchars($row['nombre_completo']); ?>" aria-label="default input example">
             </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <label for="Nº de identificacion"></label>
-                <input class="form-control" name="numero_documento" id="numero_documento" type="text" placeholder="Nº de identificacion" aria-label="default input example">
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <label for="nuevo Nombre del dueño"></label>
-                <input class="form-control" name="nombre_completo" id="nuevo_dueño" type="text" placeholder="Nuevo nombre del dueño" aria-label="default input example">
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <label for="Nº de identificacion"></label>
-                <input class="form-control" name="numero_documento" id="nuevo_documento" type="text" placeholder="Nº de identificacion" aria-label="default input example">
-            </div>
-
+            
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Breve descrpcion de la perdida</label>
+            <textarea name="detalle" id= "detalle"class="form-control" id="exampleFormControlTextarea1"<?php echo htmlspecialchars($row['detalle']); ?> rows="3"></textarea>
         </div>
 
         <div class="mt-4 mx-4 d-grid gap-2 d-md-block d-md-flex justify-content-md-end">
-            <button class="btn btn-success" id="btn-guardar" type="submit">Guardar</button>
-            <a href="../views/categorias.php">
+            <button class="btn btn-success"  type="submit">Guardar</button>
+            <a href="../views/categorias.html">
                 <button class="btn btn-danger" type="button">Cancelar</button>
             </a>
         </div>
+    </form>
     </div>
 
 

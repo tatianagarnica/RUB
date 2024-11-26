@@ -78,8 +78,8 @@ include '../php/editar_base_perdida.php';?>
         
 
 
-    <form method="POST" action="../php/editar_base_perdida.php" enctype="multipart/form-data">
-    <input type="hidden" name="registro_id" value="<?php echo $row['id']; ?>">
+    <form method="POST" action="../php/editar_perdida.php" enctype="multipart/form-data">
+    <input type="hidden" name="registro_id" value="<?php echo htmlspecialchars($row['id']); ?>">
         <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-6">
             
@@ -88,27 +88,27 @@ include '../php/editar_base_perdida.php';?>
             </div>
             <div class="col-12 col-md-12 col-lg-6">
                 <label for="Nº De referencia">Nº De referencia</label>
-                <input class="form-control" name= "referencia"id="referencia" type="text" placeholder="Nº De referencia" aria-label="default input example">
+                <input class="form-control" name= "referencia"id="referencia" value="<?php echo htmlspecialchars($row['referencia']); ?>" type="text" placeholder="Nº De referencia" aria-label="default input example">
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="date">Feche del reporte</label>
-                <input class="form-control" name="fecha_reporte" id="fecha_reporte" type="date" placeholder="fecha reporte" aria-label="default input example">
+                <input class="form-control" name="fecha_reporte" id="fecha_reporte" value="<?php echo htmlspecialchars($row['fecha_perdida']); ?>" type="date" placeholder="fecha reporte" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="date">fecha de la perdida</label>
-                <input class="form-control" name="fecha_perdida" id="fecha_perdida" type="date" placeholder="fecha de la perdida" aria-label="default input example">
+                <input class="form-control" name="fecha_perdida" id="fecha_perdida" value="<?php echo htmlspecialchars($row['fecha_reporte']); ?>" type="date" placeholder="fecha de la perdida" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Direccion">Direccion exacta</label>
-                <input class="form-control" name="direccion"id="direccion" type="text" placeholder="Direccion" aria-label="default input example">
+                <input class="form-control" name="direccion"id="direccion" value="<?php echo isset($row['direccion']) ? htmlspecialchars($row['direccion']) : ''; ?>" type="text" placeholder="Direccion" aria-label="default input example">
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="tipodocumento">Tipo del documento</label>
-                <select class="form-select" name="tipo_documento" id="tipo_documento" aria-label="Default select example">
+                <select class="form-select" name="tipo_documento" id="tipo_documento" value="<?php echo htmlspecialchars($row['tipo_documento']); ?>" aria-label="Default select example">
                     <option selected></option>
                     <option value="1">RC</option>
                     <option value="2">CC</option>
@@ -117,17 +117,17 @@ include '../php/editar_base_perdida.php';?>
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nºdeidentificacion">Nº de identificacion</label>
-                <input class="form-control"  name="numero_documento"id="numero_documento" type="text" placeholder="Nºdeidentificacion" aria-label="default input example">
+                <input class="form-control"  name="numero_documento"id="numero_documento" value="<?php echo htmlspecialchars($row['numero_documento']); ?>" type="text" placeholder="Nºdeidentificacion" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nombre del dueño"></label>
-                <input class="form-control" id="nombre_completo" type="text" placeholder="Nombre del dueño" aria-label="default input example">
+                <input class="form-control" id="nombre_completo" type="text" placeholder="Nombre del dueño" value="<?php echo htmlspecialchars($row['nombre_completo']); ?>" aria-label="default input example">
             </div>
             
         </div>
         <div class="mb-3 mt-3">
             <label for="exampleFormControlTextarea1" class="form-label">Breve descrpcion de la perdida</label>
-            <textarea name="detalle" id= "detalle"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="detalle" id= "detalle"class="form-control" id="exampleFormControlTextarea1"<?php echo htmlspecialchars($row['detalle']); ?> rows="3"></textarea>
         </div>
 
         <div class="mt-4 mx-4 d-grid gap-2 d-md-block d-md-flex justify-content-md-end">

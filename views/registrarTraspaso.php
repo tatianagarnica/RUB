@@ -21,9 +21,9 @@
                 Bicicleta
                 </a>
                 <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../views/registrarBicicleta.html">Registrar</a></li>
-                <li><a class="dropdown-item" href="../views/editarBicicleta.html">Editar</a></li>
-                <li><a class="dropdown-item" href="../views/verlistadobicicleta.html">Ver</a></li>
+                <li><a class="dropdown-item" href="../views/registrarBicicleta.php">Registrar</a></li>
+                <li><a class="dropdown-item" href="../views/editarBicicleta.php">Editar</a></li>
+                <li><a class="dropdown-item" href="../views/verlistadobicicleta.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -31,8 +31,8 @@
                     Traspaso propiedad
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarTraspaso.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistatraspaso.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarTraspaso.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistatraspaso.php">Ver</a></li>
                 </ul>
             </div>
             <div class="dropdown">
@@ -40,8 +40,8 @@
                     Reportar perdida
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../views/registrarPerdida.html">Registrar</a></li>
-                    <li><a class="dropdown-item" href="../views/verlistaperdidas.html">Ver</a></li>
+                    <li><a class="dropdown-item" href="../views/registrarPerdida.php">Registrar</a></li>
+                    <li><a class="dropdown-item" href="../views/verlistaperdidas.php">Ver</a></li>
                 </ul>
             </div>
             <form class="d-flex" role="search">
@@ -54,10 +54,10 @@
                             <h2>Juan Manuel</h2>
                         </li>
                         <hr>
-                      <li><a class="dropdown-item" href="../views/perfil.html"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
-                      <li><a class="dropdown-item" href="../views/editarPerfil.html"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
+                      <li><a class="dropdown-item" href="../views/perfil.php"> <p><i class="fa-solid fa-user"></i>Ver perfil</p> </a></li>
+                      <li><a class="dropdown-item" href="../views/editarPerfil.php"><p><i class="fa-solid fa-user"></i>Editar perfil </p></a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../views/welcome.html"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
+                      <li><a class="dropdown-item" href="../views/welcome.php"><p><i class="fa-solid fa-right-from-bracket"></i>cerrar Sesion</p></a></li>
                     </ul>
                 </div>
           </form>
@@ -72,49 +72,54 @@
                 <h2>Registrar un Traspaso</h2>
             </div>
         </div>
+        <form method="POST" action="../php/registro_traspaso.php" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-6">
-                <label for="Id de la bicicleta"></label>
-                <input class="form-control" id="IdBicicleta" type="text" placeholder="Id de la bicicleta" aria-label="default input example">
-            </div>
             <div class="col-12 col-md-12 col-lg-6">
                 <label for="Nº De referencia"></label>
-                <input class="form-control" id="Nºreferencia" type="text" placeholder="Nº De referencia" aria-label="default input example">
+                <input class="form-control"name="referencia" id="referencia" type="text" placeholder="Nº De referencia" aria-label="default input example">
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-6">
-                <label for="Color"></label>
-                <input class="form-control" id="Color" type="text" placeholder="Color" aria-label="default input example">
-            </div>
-            <div class="col-12 col-md-12 col-lg-6">
+         
+            <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nº Rin"></label>
-                <input class="form-control" id="NºRin" type="text" placeholder="Nº Rin" aria-label="default input example">
+                <input class="form-control" name="numero_rin" id="numero_rin" type="text" placeholder="Nº Rin" aria-label="default input example">
             </div>
-        </div>
-        <div class="row">
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Marca"></label>
-                <input class="form-control" id="Marca" type="text" placeholder="Marca" aria-label="default input example">
+                <select class="form-select" name="marca" id="marca" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="Specialized">Specialized</option>
+                    <option value="Canyon">Canyon</option>
+                    <option value="Scott">Scott</option>
+                </select>
             </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <label for="Valor"></label>
-                <input class="form-control" id="Valor" type="text" placeholder="Valor" aria-label="default input example">
-            </div>
+           
+        </div>
+        <div class="row">
+            
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nombre del dueño"></label>
-                <input class="form-control" id="Nombre del dueño" type="text" placeholder="Nombre del dueño" aria-label="default input example">
+                <input class="form-control" name="nombre_completo" id="nombre_dueño" type="text" placeholder="Nombre del dueño" aria-label="default input example">
             </div>
             <div class="col-12 col-md-12 col-lg-4">
                 <label for="Nº de identificacion"></label>
-                <input class="form-control" id="Nºdeidentificacion" type="text" placeholder="Nº de identificacion" aria-label="default input example">
+                <input class="form-control" name="numero_documento" id="numero_documento" type="text" placeholder="Nº de identificacion" aria-label="default input example">
+            </div>
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="nuevo Nombre del dueño"></label>
+                <input class="form-control" name="nombre_completo" id="nuevo_dueño" type="text" placeholder="Nuevo nombre del dueño" aria-label="default input example">
+            </div>
+            <div class="col-12 col-md-12 col-lg-4">
+                <label for="Nº de identificacion"></label>
+                <input class="form-control" name="numero_documento" id="nuevo_documento" type="text" placeholder="Nº de identificacion" aria-label="default input example">
             </div>
 
         </div>
 
         <div class="mt-4 mx-4 d-grid gap-2 d-md-block d-md-flex justify-content-md-end">
-            <button class="btn btn-success" id="btn-guardar" type="button">Guardar</button>
-            <a href="../views/categorias.html">
+            <button class="btn btn-success" id="btn-guardar" type="submit">Guardar</button>
+            <a href="../views/categorias.php">
                 <button class="btn btn-danger" type="button">Cancelar</button>
             </a>
         </div>
